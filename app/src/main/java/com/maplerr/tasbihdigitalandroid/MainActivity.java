@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.nfc.Tag;
 import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,9 +54,19 @@ public class MainActivity extends AppCompatActivity{
         countText.setText("0");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void updateProgressBar() {
-        progressBar.setProgress(countZikr, true);
+    public void ViewAndroidBuildNum(View view) {
+        Log.d(TAG, "ViewAndroidBuildNum: is" + VERSION.SDK_INT);
+        //This is for debug purposes - attached with debug button
+    }
+
+    public void updateProgressBar(){
+
+        if (VERSION.SDK_INT >= VERSION_CODES.N) {
+            progressBar.setProgress(countZikr, true);
+        } else {
+            progressBar.setProgress(countZikr); //no animation
+
+        }
 
         //nnati try utk different api level
     }
