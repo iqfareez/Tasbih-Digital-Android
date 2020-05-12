@@ -58,6 +58,12 @@ public class MainActivity extends AppCompatActivity{
     public void resetCount(View view) { //attached to reset button kat bawah tu
         countZikr = 0;
         countText.setText("0");
+
+        if (VERSION.SDK_INT >= VERSION_CODES.N) {
+            progressBar.setProgress(0, true); //set progress bar balik ke 0
+        } else {
+            progressBar.setProgress(0); //no animation
+        }
     }
 
     public void ViewAndroidBuildNum(View view) {
@@ -71,7 +77,6 @@ public class MainActivity extends AppCompatActivity{
             progressBar.setProgress(countZikr, true);
         } else {
             progressBar.setProgress(countZikr); //no animation
-
         }
 
         //nnati try utk different api level
