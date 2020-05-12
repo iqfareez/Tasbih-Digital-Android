@@ -19,11 +19,13 @@ public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "MainActivity";
     private TextView countText;
+    private TextView targetText;
     private Button buttonCount;
     private Button resetButton;
     private ProgressBar progressBar;
 
     public int countZikr = 0;
+    public int targetZikr = 33;
 
     private long backPressedTimer;
 
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity{
         buttonCount = findViewById(R.id.button_count);
         resetButton = findViewById(R.id.button_reset);
         progressBar = findViewById(R.id.progressBar);
+        targetText = findViewById(R.id.textView_progress_target);
+        targetText.setText(String.valueOf(targetZikr));
+        progressBar.setMax(targetZikr);
+
 
     }
 
@@ -49,7 +55,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    public void resetCount(View view) {
+    public void resetCount(View view) { //attached to reset button kat bawah tu
         countZikr = 0;
         countText.setText("0");
     }
