@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Prayer beads</string>
+    <string name="app_name">Counter app</string>
     <string name="default_button_text">+1</string>
     <string name="button_start_text">START</string>
     <string name="button_continue_text">CONTINUE</string>
