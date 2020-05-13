@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mockMainNum"
         android:textColor="#000000"
-        android:textSize="60sp"
+        android:textSize="70sp"
         app:layout_constraintBottom_toTopOf="@+id/button_count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
