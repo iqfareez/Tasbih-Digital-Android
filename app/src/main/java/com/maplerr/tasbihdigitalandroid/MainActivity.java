@@ -1,5 +1,6 @@
 package com.maplerr.tasbihdigitalandroid;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
+    private static final String S_MAIN_COUNT = "mainCount"; //utk savedInstanceState
 
     private static final String TAG = "MainActivity";
     private TextView countText;
@@ -80,6 +82,20 @@ public class MainActivity extends AppCompatActivity{
         }
 
         //nnati try utk different api level
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(S_MAIN_COUNT, countZikr);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        countZikr = savedInstanceState.getInt(S_MAIN_COUNT);
     }
 
     @Override
