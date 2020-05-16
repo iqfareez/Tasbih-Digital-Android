@@ -37,13 +37,14 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         countText = findViewById(R.id.text_zikr);
-        countText.setText("0");
         buttonCount = findViewById(R.id.button_count);
         resetButton = findViewById(R.id.button_reset);
         progressBar = findViewById(R.id.progressBar);
         targetText = findViewById(R.id.textView_progress_target);
         targetText.setText(String.valueOf(targetZikr));
         progressBar.setMax(targetZikr);
+
+        countText.setText("0"); //initialize with zikir value
 
 
     }
@@ -96,6 +97,13 @@ public class MainActivity extends AppCompatActivity{
         super.onRestoreInstanceState(savedInstanceState);
 
         countZikr = savedInstanceState.getInt(S_MAIN_COUNT);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        countText.setText(String.valueOf(countZikr));
     }
 
     @Override

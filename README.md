@@ -2,10 +2,13 @@
 
 Counter-like app My beginner project. **Code in Java**
 
-Developement started during Covid-19 pandemic -fareez
+##  DEVELOPMENT STATUS
+ **ACTIVE**
+
+Developement started during Covid-19 pandemic (April 2020) -fareez
 
 ## Known Issues
-- Turn device to landscape messes up the layout
+- Counter data losses when the app killed.
 
 ### Download application
 **Google Play:** https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid
