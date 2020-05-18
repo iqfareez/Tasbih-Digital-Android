@@ -9,6 +9,7 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 
 ## Known Issues
 - Counter data losses when the app killed.
+- 'START' text after rotate device (should be resume or something)
 
 ### Download application
 **Google Play:** https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid

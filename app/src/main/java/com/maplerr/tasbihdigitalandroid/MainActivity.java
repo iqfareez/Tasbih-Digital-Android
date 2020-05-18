@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity{
         if (backPressedTimer + millisToExit > System.currentTimeMillis()) {
             super.onBackPressed(); //finish
         } else {
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Data will be loss! Tap again to exit", Toast.LENGTH_SHORT).show();
         }
 
         backPressedTimer = System.currentTimeMillis();
