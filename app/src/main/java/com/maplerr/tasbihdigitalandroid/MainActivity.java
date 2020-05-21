@@ -46,6 +46,13 @@ public class MainActivity extends AppCompatActivity{
 
         countText.setText("0"); //initialize with zikir value
 
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openResetDialog();
+            }
+        });
+
 
     }
 
@@ -67,11 +74,6 @@ public class MainActivity extends AppCompatActivity{
         } else {
             progressBar.setProgress(0); //no animation
         }
-    }
-
-    public void ViewAndroidBuildNum(View view) {
-        Log.d(TAG, "ViewAndroidBuildNum: is" + VERSION.SDK_INT);
-        //This is for debug purposes - attached with debug button
     }
 
     public void updateProgressBar(){
@@ -117,5 +119,20 @@ public class MainActivity extends AppCompatActivity{
         }
 
         backPressedTimer = System.currentTimeMillis();
+    }
+
+    //DEBUG ONLY
+    public void ViewAndroidBuildNum(View view) {
+        Log.d(TAG, "ViewAndroidBuildNum: is" + VERSION.SDK_INT);
+        //This is for debug purposes - attached with debug button
+    }
+
+    public void showToastReset() {
+        Toast.makeText(this, "Clicked yes", Toast.LENGTH_SHORT).show();
+    }
+
+    public void openResetDialog() {
+        ResetDialog resetDialog = new ResetDialog(this);
+        resetDialog.show(getSupportFragmentManager(), "reset dialog");
     }
 }
