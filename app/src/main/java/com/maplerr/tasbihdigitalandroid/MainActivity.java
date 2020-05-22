@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity{
     public int countZikr = 0;
     public int targetZikr = 33;
 
+    private int progressCounter;
+
     private long backPressedTimer;
 
     @Override
@@ -44,12 +46,15 @@ public class MainActivity extends AppCompatActivity{
         targetText.setText(String.valueOf(targetZikr));
         progressBar.setMax(targetZikr);
 
-        countText.setText("0"); //initialize with zikir value
+//        countText.setText("0"); //initialize with zikir value
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openResetDialog();
+                if (countZikr != 0)
+                    openResetDialog();
+                else
+                    Toast.makeText(MainActivity.this, "Counter is already 0", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -60,31 +65,41 @@ public class MainActivity extends AppCompatActivity{
         buttonCount.setText("+1");
         countZikr++;
         countText.setText(String.valueOf(countZikr));
+        progressCounter = countZikr;
         updateProgressBar();
-        Log.i(TAG, "incrementCount: value is" + countZikr);
+        Log.i(TAG, "incrementCount: value is" + countZikr + "progressCount is " + progressCounter);
 
     }
 
-    public void resetCount(View view) { //attached to reset button kat bawah tu
+    public void resetCount() { //attached to reset button kat bawah tu
         countZikr = 0;
         countText.setText("0");
+        buttonCount.setText("START");
 
         if (VERSION.SDK_INT >= VERSION_CODES.N) {
             progressBar.setProgress(0, true); //set progress bar balik ke 0
         } else {
             progressBar.setProgress(0); //no animation
         }
+
+        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
+
     }
 
     public void updateProgressBar(){
 
         if (VERSION.SDK_INT >= VERSION_CODES.N) {
-            progressBar.setProgress(countZikr, true);
+            progressBar.setProgress(progressCounter, true);
         } else {
-            progressBar.setProgress(countZikr); //no animation
+            progressBar.setProgress(progressCounter); //no animation
         }
 
         //nnati try utk different api level
+    }
+
+    public void openResetDialog() {
+        ResetDialog resetDialog = new ResetDialog(this);
+        resetDialog.show(getSupportFragmentManager(), "reset dialog");
     }
 
     @Override
@@ -99,6 +114,9 @@ public class MainActivity extends AppCompatActivity{
         super.onRestoreInstanceState(savedInstanceState);
 
         countZikr = savedInstanceState.getInt(S_MAIN_COUNT);
+
+        if (countZikr > 0)
+            buttonCount.setText("+1");
     }
 
     @Override
@@ -127,12 +145,6 @@ public class MainActivity extends AppCompatActivity{
         //This is for debug purposes - attached with debug button
     }
 
-    public void showToastReset() {
-        Toast.makeText(this, "Clicked yes", Toast.LENGTH_SHORT).show();
-    }
+    // TODO: 22/5/2020 Disable buttonReset when value = 0, toolbar icon showing app info, set target, change onrestoreInstateBagaitu
 
-    public void openResetDialog() {
-        ResetDialog resetDialog = new ResetDialog(this);
-        resetDialog.show(getSupportFragmentManager(), "reset dialog");
-    }
 }

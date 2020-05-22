@@ -27,13 +27,13 @@ public class ResetDialog extends AppCompatDialogFragment {
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ((MainActivity)getActivity()).showToastReset();
+                        ((MainActivity)getActivity()).resetCount();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(context, "CANCELED", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show();
                     }
                 });
 
