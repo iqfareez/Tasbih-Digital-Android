@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity{
     public int countZikr = 0;
     public int targetZikr = 33;
 
-    private int progressCounter;
+    private int progressCounter = 0;
+    private int cummulativeRound;
 
     private long backPressedTimer;
 
@@ -65,14 +66,18 @@ public class MainActivity extends AppCompatActivity{
         buttonCount.setText("+1");
         countZikr++;
         countText.setText(String.valueOf(countZikr));
-        progressCounter = countZikr;
+        progressCounter++;
         updateProgressBar();
         Log.i(TAG, "incrementCount: value is" + countZikr + "progressCount is " + progressCounter);
+
+        if (progressCounter  == targetZikr)
+            progressCounter = 0;
 
     }
 
     public void resetCount() { //attached to reset button kat bawah tu
         countZikr = 0;
+        progressCounter = 0;
         countText.setText("0");
         buttonCount.setText("START");
 
