@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -17,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity{
-    private static final String S_MAIN_COUNT = "mainCount"; //utk savedInstanceState
+    private static final String S_MAIN_COUNT = "mainCount"; //utk SharedPreference
+    private static final String S_PROG_COUNT = "progressCount"; //utk SharedPreference
+    private static final String S_CUMMU_COUNT = "cummulativeCount"; //utk SharedPreference
 
     private static final String TAG = "MainActivity";
     private TextView countText;
@@ -70,8 +73,10 @@ public class MainActivity extends AppCompatActivity{
         updateProgressBar();
         Log.i(TAG, "incrementCount: value is" + countZikr + "progressCount is " + progressCounter);
 
-        if (progressCounter  == targetZikr)
+        if (progressCounter  == targetZikr) {
             progressCounter = 0;
+            cummulativeRound += 1;
+        }
 
     }
 
@@ -107,6 +112,7 @@ public class MainActivity extends AppCompatActivity{
         resetDialog.show(getSupportFragmentManager(), "reset dialog");
     }
 
+    /* OnSaveInstance function
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -119,6 +125,37 @@ public class MainActivity extends AppCompatActivity{
         super.onRestoreInstanceState(savedInstanceState);
 
         countZikr = savedInstanceState.getInt(S_MAIN_COUNT);
+
+        if (countZikr > 0)
+            buttonCount.setText("+1");
+    }
+    */
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putInt(S_MAIN_COUNT, countZikr);
+        editor.putInt(S_PROG_COUNT, progressCounter);
+        editor.putInt(S_CUMMU_COUNT, cummulativeRound);
+
+        editor.apply();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+
+        countZikr = prefs.getInt(S_MAIN_COUNT, 0);
+        progressCounter = prefs.getInt(S_PROG_COUNT, 0);
+        cummulativeRound = prefs.getInt(S_CUMMU_COUNT, 0);
+
+        updateProgressBar();
 
         if (countZikr > 0)
             buttonCount.setText("+1");
@@ -150,6 +187,6 @@ public class MainActivity extends AppCompatActivity{
         //This is for debug purposes - attached with debug button
     }
 
-    // TODO: 22/5/2020 Disable buttonReset when value = 0, toolbar icon showing app info, set target, change onrestoreInstateBagaitu
+    // TODO: 22/5/2020 Disable buttonReset when value = 0, toolbar icon showing app info, set target
 
 }
