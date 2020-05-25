@@ -23,7 +23,7 @@ public class ResetDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Reset")
-                .setMessage("Are you sure you want to reset?")
+                .setMessage("Are you sure you want to reset all values? (Target number will not be effected)")
                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

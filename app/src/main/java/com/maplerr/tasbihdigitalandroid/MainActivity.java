@@ -24,13 +24,14 @@ public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "MainActivity";
     private TextView countText;
+    private TextView cummulativeText;
     private TextView targetText;
     private Button buttonCount;
     private Button resetButton;
     private ProgressBar progressBar;
 
     public int countZikr = 0;
-    public int targetZikr = 33;
+    public int targetZikr = 10;
 
     private int progressCounter = 0;
     private int cummulativeRound;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity{
         resetButton = findViewById(R.id.button_reset);
         progressBar = findViewById(R.id.progressBar);
         targetText = findViewById(R.id.textView_progress_target);
+        cummulativeText = findViewById(R.id.textView_cummulative_count);
         targetText.setText(String.valueOf(targetZikr));
         progressBar.setMax(targetZikr);
 
@@ -65,17 +67,21 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    public void incrementCount(View view) {
+    public void incrementCount(View view) { //alsp handling updating text view
         buttonCount.setText("+1");
         countZikr++;
         countText.setText(String.valueOf(countZikr));
         progressCounter++;
         updateProgressBar();
-        Log.i(TAG, "incrementCount: value is" + countZikr + "progressCount is " + progressCounter);
+//        Log.i(TAG, "incrementCount: value is" + countZikr + "progressCount is " + progressCounter);
 
-        if (progressCounter  == targetZikr) {
+        if (progressCounter == targetZikr) {
             progressCounter = 0;
+        }
+
+        if (progressCounter == 1) {
             cummulativeRound += 1;
+            cummulativeText.setText("Round: " + cummulativeRound);
         }
 
     }
@@ -85,6 +91,8 @@ public class MainActivity extends AppCompatActivity{
         progressCounter = 0;
         countText.setText("0");
         buttonCount.setText("START");
+        cummulativeRound = 0;
+        cummulativeText.setText("0");
 
         if (VERSION.SDK_INT >= VERSION_CODES.N) {
             progressBar.setProgress(0, true); //set progress bar balik ke 0
@@ -156,6 +164,7 @@ public class MainActivity extends AppCompatActivity{
         cummulativeRound = prefs.getInt(S_CUMMU_COUNT, 0);
 
         updateProgressBar();
+        cummulativeText.setText("Round: " + cummulativeRound);
 
         if (countZikr > 0)
             buttonCount.setText("+1");
@@ -175,7 +184,7 @@ public class MainActivity extends AppCompatActivity{
         if (backPressedTimer + millisToExit > System.currentTimeMillis()) {
             super.onBackPressed(); //finish
         } else {
-            Toast.makeText(this, "Data will be loss! Tap again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
         }
 
         backPressedTimer = System.currentTimeMillis();
