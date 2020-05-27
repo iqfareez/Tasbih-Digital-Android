@@ -11,6 +11,9 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -63,9 +66,38 @@ public class MainActivity extends AppCompatActivity{
                     Toast.makeText(MainActivity.this, "Counter is already 0", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    //region menu toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.more_action_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { //add action2 kau kat sini
+        switch (item.getItemId()) {
+            case R.id.action_more_menu:
+                Toast.makeText(this, "More action menu clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_item_1:
+                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_item_2:
+                Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_subitem_1:
+                Toast.makeText(this, "Subitem 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
     }
+
+    //endregion
 
     public void incrementCount(View view) { //alsp handling updating text view
         buttonCount.setText("+1");
@@ -77,13 +109,9 @@ public class MainActivity extends AppCompatActivity{
 
         if (progressCounter == targetZikr) {
             progressCounter = 0;
-        }
-
-        if (progressCounter == 1) {
             cummulativeRound += 1;
             cummulativeText.setText("Round: " + cummulativeRound);
         }
-
     }
 
     public void resetCount() { //attached to reset button kat bawah tu

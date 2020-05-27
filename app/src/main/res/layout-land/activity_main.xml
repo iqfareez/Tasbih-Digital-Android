@@ -17,14 +17,15 @@
         app:layout_constraintBottom_toTopOf="@+id/button_count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.186" />
 
     <Button
         android:id="@+id/button_count"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="600dp"
         android:layout_height="110dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/button_bg"
         android:onClick="incrementCount"
         android:text="@string/button_start_text"
@@ -32,6 +33,7 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -43,8 +45,10 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_count" />
+        app:layout_constraintTop_toBottomOf="@id/button_count"
+        app:layout_constraintVertical_bias="0.969" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -56,9 +60,10 @@
         android:progress="0"
         app:layout_constraintBottom_toTopOf="@+id/button_count"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_zikr" />
+        app:layout_constraintTop_toBottomOf="@+id/text_zikr"
+        app:layout_constraintVertical_bias="0.222" />
 
     <TextView
         android:id="@+id/textView_progress_target"
@@ -83,6 +88,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_cummulative_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Round: 0"
+        app:layout_constraintBottom_toTopOf="@+id/button_count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
