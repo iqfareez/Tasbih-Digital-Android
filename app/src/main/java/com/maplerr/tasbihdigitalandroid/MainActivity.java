@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -80,22 +82,51 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(@NonNull MenuItem item) { //add action2 kau kat sini
         switch (item.getItemId()) {
             case R.id.action_share:
-                Toast.makeText(this, "Shared", Toast.LENGTH_SHORT).show();
+                shareValueToOtherApp();
                 return true;
-            case R.id.action_item_1:
-//                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+            case R.id.action_item_1: //about
                 openAboutDialog();
                 return true;
-            case R.id.action_item_2:
-                Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.action_subitem_1:
+            case R.id.action_subitem_1: //email
                 Toast.makeText(this, "Subitem 1 clicked", Toast.LENGTH_SHORT).show();
+                openWebPage("mailto:foxtrotiqmal3@gmail.com");
+                return true;
+            case R.id.action_subitem_2: //website
+                openWebPage("https://sites.google.com/view/tasbihdigitalfareez/home");
+                return true;
+            case R.id.action_subitem_3: //playstore app
+                Toast.makeText(this, "You can promote this app to your friends", Toast.LENGTH_SHORT).show();
+                openWebPage("https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void shareValueToOtherApp() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+
+        String message; //customize message here
+        if (countZikr == 0)
+            message = "I didn't make any progress yet";
+        else
+            message = "I made till " + countZikr + ".";
+
+        sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
+
+    public void openWebPage(String url) {
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     //endregion

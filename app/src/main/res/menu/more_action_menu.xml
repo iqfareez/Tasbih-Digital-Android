@@ -24,7 +24,7 @@
                 app:showAsAction="never" />
 
             <item android:id="@+id/action_subitem_3"
-                android:title="Open in Google Play"
+                android:title="Open in Google Play..."
                 app:showAsAction="never" />
         </menu>
     </item>
