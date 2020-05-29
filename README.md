@@ -13,12 +13,12 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 ## Fixed Issues
 - Counter data losses when the app killed.
 - Cumulative round not available in landscape mode
+- Hide reset button when counter is 0
 
 ## Planned Feature
 - Set target or predefined target
 - Toast message onBackPressed change to snackbar / snackbar material
 - Dark theme
-- Share info to other app? Maybe text like bagitau member dh berapa dah tekan 
 
 ## Current app version
 1.6.2 - 26-May-2020

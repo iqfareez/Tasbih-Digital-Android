@@ -22,7 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private static final String S_MAIN_COUNT = "mainCount"; //utk SharedPreference
     private static final String S_PROG_COUNT = "progressCount"; //utk SharedPreference
     private static final String S_CUMMU_COUNT = "cummulativeCount"; //utk SharedPreference
@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity{
                 openAboutDialog();
                 return true;
             case R.id.action_subitem_1: //email
-                Toast.makeText(this, "Subitem 1 clicked", Toast.LENGTH_SHORT).show();
                 openWebPage("mailto:foxtrotiqmal3@gmail.com");
                 return true;
             case R.id.action_subitem_2: //website
@@ -139,6 +138,8 @@ public class MainActivity extends AppCompatActivity{
         updateProgressBar();
 //        Log.i(TAG, "incrementCount: value is" + countZikr + "progressCount is " + progressCounter);
 
+        resetButton.setVisibility(View.VISIBLE);
+
         if (progressCounter == targetZikr) {
             progressCounter = 0;
             cummulativeRound += 1;
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity{
         buttonCount.setText("START");
         cummulativeRound = 0;
         cummulativeText.setText("0");
+        resetButton.setVisibility(View.INVISIBLE);
 
         if (VERSION.SDK_INT >= VERSION_CODES.N) {
             progressBar.setProgress(0, true); //set progress bar balik ke 0
@@ -160,11 +162,11 @@ public class MainActivity extends AppCompatActivity{
             progressBar.setProgress(0); //no animation
         }
 
-        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
+        // TODO: 29/5/2020 Snackbar done reset
 
     }
 
-    public void updateProgressBar(){
+    public void updateProgressBar() {
 
         if (VERSION.SDK_INT >= VERSION_CODES.N) {
             progressBar.setProgress(progressCounter, true);
@@ -182,7 +184,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void openAboutDialog() {
         AboutDialog aboutDialog = new AboutDialog(this);
-        aboutDialog.show(getSupportFragmentManager(),"about dialog");
+        aboutDialog.show(getSupportFragmentManager(), "about dialog");
     }
 
     /* OnSaveInstance function
@@ -231,8 +233,10 @@ public class MainActivity extends AppCompatActivity{
         updateProgressBar();
         cummulativeText.setText("Round: " + cummulativeRound);
 
-        if (countZikr > 0)
+        if (countZikr > 0) {
             buttonCount.setText("+1");
+            resetButton.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
