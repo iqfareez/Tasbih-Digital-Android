@@ -2,21 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_more_menu"
-        android:icon="@drawable/ic_more_black"
+    <item android:id="@+id/action_share"
+        android:icon="@drawable/ic_share"
         android:title="Info"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/action_item_1"
-        android:title="Item1"
+        android:title="About"
         app:showAsAction="never" />
 
     <item android:id="@+id/action_item_2"
-        android:title="Item2"
+        android:title="Help"
         app:showAsAction="never" >
         <menu>
             <item android:id="@+id/action_subitem_1"
-                android:title="SubItem1"
+                android:title="Email me..."
+                app:showAsAction="never" />
+
+            <item android:id="@+id/action_subitem_2"
+                android:title="Visit website..."
+                app:showAsAction="never" />
+
+            <item android:id="@+id/action_subitem_3"
+                android:title="Open in Google Play"
                 app:showAsAction="never" />
         </menu>
     </item>

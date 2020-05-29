@@ -79,11 +79,12 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) { //add action2 kau kat sini
         switch (item.getItemId()) {
-            case R.id.action_more_menu:
-                Toast.makeText(this, "More action menu clicked", Toast.LENGTH_SHORT).show();
+            case R.id.action_share:
+                Toast.makeText(this, "Shared", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_item_1:
-                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                openAboutDialog();
                 return true;
             case R.id.action_item_2:
                 Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
@@ -146,6 +147,11 @@ public class MainActivity extends AppCompatActivity{
     public void openResetDialog() {
         ResetDialog resetDialog = new ResetDialog(this);
         resetDialog.show(getSupportFragmentManager(), "reset dialog");
+    }
+
+    public void openAboutDialog() {
+        AboutDialog aboutDialog = new AboutDialog(this);
+        aboutDialog.show(getSupportFragmentManager(),"about dialog");
     }
 
     /* OnSaveInstance function

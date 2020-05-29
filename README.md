@@ -9,16 +9,16 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 
 ## Known Issues
 - Target defaulted to 10, not flexible
-- Cumulative round not available in landscape mode
 
 ## Fixed Issues
 - Counter data losses when the app killed.
+- Cumulative round not available in landscape mode
 
 ## Planned Feature
 - Set target or predefined target
 - Toast message onBackPressed change to snackbar / snackbar material
 - Dark theme
-- Share info to other app?
+- Share info to other app? Maybe text like bagitau member dh berapa dah tekan 
 
 ## Current app version
 1.6.2 - 26-May-2020
