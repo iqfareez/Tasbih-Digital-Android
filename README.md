@@ -19,6 +19,7 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 - Set target or predefined target
 - Toast message onBackPressed change to snackbar / snackbar material
 - Dark theme
+- Notification, button, counter text etc.
 
 ## Current app version
 1.6.2 - 26-May-2020
