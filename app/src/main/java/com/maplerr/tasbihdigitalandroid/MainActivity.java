@@ -19,8 +19,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private static final String S_MAIN_COUNT = "mainCount"; //utk SharedPreference
@@ -43,10 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
     private long backPressedTimer;
 
+    private View parentLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        parentLayout = findViewById(R.id.parent_layout);
 
         countText = findViewById(R.id.text_zikr);
         buttonCount = findViewById(R.id.button_count);
@@ -57,15 +67,11 @@ public class MainActivity extends AppCompatActivity {
         targetText.setText(String.valueOf(targetZikr));
         progressBar.setMax(targetZikr);
 
-//        countText.setText("0"); //initialize with zikir value
-
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (countZikr != 0)
                     openResetDialog();
-                else
-                    Toast.makeText(MainActivity.this, "Counter is already 0", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -94,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 openWebPage("https://sites.google.com/view/tasbihdigitalfareez/home");
                 return true;
             case R.id.action_subitem_3: //playstore app
-                Toast.makeText(this, "You can promote this app to your friends", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You can promote this app other people", Toast.LENGTH_LONG).show();
                 openWebPage("https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid");
                 return true;
             default:
@@ -108,10 +114,11 @@ public class MainActivity extends AppCompatActivity {
         sendIntent.setAction(Intent.ACTION_SEND);
 
         String message; //customize message here
+        message = "As of " + getCurrentDateTime() + ", ";
         if (countZikr == 0)
-            message = "I didn't make any progress yet";
+            message = message + "I didn't make any progress yet";
         else
-            message = "I made till " + countZikr + ".";
+            message = message + "I made till " + countZikr + ".";
 
         sendIntent.putExtra(Intent.EXTRA_TEXT, message);
         sendIntent.setType("text/plain");
@@ -147,22 +154,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void resetCount() { //attached to reset button kat bawah tu
-        countZikr = 0;
-        progressCounter = 0;
-        countText.setText("0");
-        buttonCount.setText("START");
-        cummulativeRound = 0;
-        cummulativeText.setText("0");
-        resetButton.setVisibility(View.INVISIBLE);
+    public void resetCount(Boolean proceed) { //attached to reset button kat bawah tu
+        if (proceed) {
+            countZikr = 0;
+            progressCounter = 0;
+            countText.setText("0");
+            buttonCount.setText("START");
+            cummulativeRound = 0;
+            cummulativeText.setText("");
+            resetButton.setVisibility(View.INVISIBLE);
 
-        if (VERSION.SDK_INT >= VERSION_CODES.N) {
-            progressBar.setProgress(0, true); //set progress bar balik ke 0
-        } else {
-            progressBar.setProgress(0); //no animation
+            if (VERSION.SDK_INT >= VERSION_CODES.N) {
+                progressBar.setProgress(0, true); //set progress bar balik ke 0
+            } else {
+                progressBar.setProgress(0); //no animation
+            }
+
+            showSnackBar(parentLayout, "Reset done");
         }
-
-        // TODO: 29/5/2020 Snackbar done reset
+        else
+            showSnackBar(parentLayout,"Canceled. Nothing changed");
 
     }
 
@@ -186,25 +197,6 @@ public class MainActivity extends AppCompatActivity {
         AboutDialog aboutDialog = new AboutDialog(this);
         aboutDialog.show(getSupportFragmentManager(), "about dialog");
     }
-
-    /* OnSaveInstance function
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putInt(S_MAIN_COUNT, countZikr);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        countZikr = savedInstanceState.getInt(S_MAIN_COUNT);
-
-        if (countZikr > 0)
-            buttonCount.setText("+1");
-    }
-    */
 
     @Override
     protected void onStop() {
@@ -259,12 +251,28 @@ public class MainActivity extends AppCompatActivity {
         backPressedTimer = System.currentTimeMillis();
     }
 
+    public void showSnackBar(View view, String message) {
+        Snackbar snackbar = Snackbar.make(view,message,Snackbar.LENGTH_SHORT);
+        snackbar.show();
+    }
+
+    private String getCurrentDateTime() {
+        String pattern = "dd/MM/yy HH:mm:ss";
+        //result: 03/06/20 05:19:15
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        String date = simpleDateFormat.format(new Date());
+
+        return date;
+    }
+
     //DEBUG ONLY
     public void ViewAndroidBuildNum(View view) {
         Log.d(TAG, "ViewAndroidBuildNum: is" + VERSION.SDK_INT);
         //This is for debug purposes - attached with debug button
     }
 
-    // TODO: 22/5/2020 Disable buttonReset when value = 0, toolbar icon showing app info, set target
+    // TODO: 22/5/2020 set target
+    // TODO: Set target
 
 }

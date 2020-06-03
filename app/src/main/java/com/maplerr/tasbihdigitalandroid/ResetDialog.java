@@ -22,18 +22,18 @@ public class ResetDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Reset")
-                .setMessage("Are you sure you want to reset all values? (Target number will not be effected)")
-                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        builder.setTitle("Reset all values")
+                .setMessage("This can't be undone. Only target value will remain unchanged.")
+                .setPositiveButton("RESET", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ((MainActivity)getActivity()).resetCount();
+                        ((MainActivity)getActivity()).resetCount(true);
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show();
+                        ((MainActivity)getActivity()).resetCount(false);
                     }
                 });
 

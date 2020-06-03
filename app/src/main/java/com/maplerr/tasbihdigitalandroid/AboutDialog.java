@@ -34,6 +34,7 @@ public class AboutDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ((MainActivity)getActivity()).openWebPage("https://linktr.ee/iqFareez");
+                        Toast.makeText(context, "Follow me lol :D", Toast.LENGTH_SHORT).show();
                     }
                 });
 
