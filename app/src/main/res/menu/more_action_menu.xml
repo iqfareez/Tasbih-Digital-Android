@@ -7,6 +7,10 @@
         android:title="Info"
         app:showAsAction="ifRoom" />
 
+    <item android:id="@+id/action_item_3"
+        android:title="Set target value"
+        app:showAsAction="never" />
+
     <item android:id="@+id/action_item_2"
         android:title="Help"
         app:showAsAction="never" >

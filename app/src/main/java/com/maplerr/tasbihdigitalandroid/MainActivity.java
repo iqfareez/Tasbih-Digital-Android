@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
     private static final String S_MAIN_COUNT = "mainCount"; //utk SharedPreference
     private static final String S_PROG_COUNT = "progressCount"; //utk SharedPreference
     private static final String S_CUMMU_COUNT = "cummulativeCount"; //utk SharedPreference
@@ -92,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_item_1: //about
                 openAboutDialog();
+                return true;
+            case R.id.action_item_3: //setTargetValue
+                openTargetDialog();
                 return true;
             case R.id.action_subitem_1: //email
                 openWebPage("mailto:foxtrotiqmal3@gmail.com");
@@ -238,17 +242,10 @@ public class MainActivity extends AppCompatActivity {
         countText.setText(String.valueOf(countZikr));
     }
 
-    @Override
-    public void onBackPressed() { //double tap to exit
-        long millisToExit = 2000;
-
-        if (backPressedTimer + millisToExit > System.currentTimeMillis()) {
-            super.onBackPressed(); //finish
-        } else {
-            Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
-        }
-
-        backPressedTimer = System.currentTimeMillis();
+    public void openTargetDialog() {
+        SetTargetPicker newFragment = new SetTargetPicker();
+        newFragment.setValueChangeListener(this);
+        newFragment.show(getSupportFragmentManager(), "target picker");
     }
 
     public void showSnackBar(View view, String message) {
@@ -266,10 +263,28 @@ public class MainActivity extends AppCompatActivity {
         return date;
     }
 
+    @Override
+    public void onBackPressed() { //double tap to exit
+        long millisToExit = 2000;
+
+        if (backPressedTimer + millisToExit > System.currentTimeMillis()) {
+            super.onBackPressed(); //finish
+        } else {
+            Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedTimer = System.currentTimeMillis();
+    }
+
     //DEBUG ONLY
     public void ViewAndroidBuildNum(View view) {
         Log.d(TAG, "ViewAndroidBuildNum: is" + VERSION.SDK_INT);
         //This is for debug purposes - attached with debug button
+    }
+
+    @Override
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+        Toast.makeText(this, "selected number: " + picker.getValue(), Toast.LENGTH_SHORT).show();
     }
 
     // TODO: 22/5/2020 set target
