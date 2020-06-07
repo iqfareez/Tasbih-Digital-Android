@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     private static final String S_MAIN_COUNT = "mainCount"; //utk SharedPreference
     private static final String S_PROG_COUNT = "progressCount"; //utk SharedPreference
     private static final String S_CUMMU_COUNT = "cummulativeCount"; //utk SharedPreference
+    private static final String S_TARGET_ZIKR = "targetZikr"; //target zikir counter tepi progress bar
 
     private static final String TAG = "MainActivity";
     private TextView countText;
@@ -52,8 +53,6 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     private long backPressedTimer;
 
     private View parentLayout;
-
-    public int debugTargetValue = 34;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         editor.putInt(S_MAIN_COUNT, countZikr);
         editor.putInt(S_PROG_COUNT, progressCounter);
         editor.putInt(S_CUMMU_COUNT, cummulativeRound);
+        editor.putInt(S_TARGET_ZIKR, targetZikr);
 
         editor.apply();
     }
@@ -227,8 +227,13 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         countZikr = prefs.getInt(S_MAIN_COUNT, 0);
         progressCounter = prefs.getInt(S_PROG_COUNT, 0);
         cummulativeRound = prefs.getInt(S_CUMMU_COUNT, 0);
+        targetZikr = prefs.getInt(S_TARGET_ZIKR, 10);
 
+        progressBar.setMax(targetZikr);
         updateProgressBar();
+
+        targetText.setText(String.valueOf(targetZikr));
+
         cummulativeText.setText("Round: " + cummulativeRound);
 
         if (countZikr > 0) {
@@ -289,13 +294,16 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
         if (oldVal != newVal) {
             Toast.makeText(this, "selected number: " + picker.getValue(), Toast.LENGTH_SHORT).show();
-            debugTargetValue = newVal;
+            targetZikr = newVal;
+            targetText.setText(String.valueOf(targetZikr));
+            progressBar.setMax(targetZikr);
+            cummulativeRound = progressCounter = 0;
+            cummulativeText.setText("0");
         } else {
             Toast.makeText(this, "Nothing changed: " + picker.getValue(), Toast.LENGTH_SHORT).show();
         }
 
         //so far so good
-        //TODO: set main target value plak
         //TODO: Change Toast to snackbar
     }
 

@@ -12,7 +12,7 @@ Counter-like app My beginner project. **Code in Java**
 Developement started during Covid-19 pandemic (April 2020) -fareez
 
 ## Known Issues
-- Target defaulted to 10, not flexible
+- -empty-
 
 ## Fixed Issues
 - Counter data losses when the app killed.
@@ -20,13 +20,11 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 - Hide reset button when counter is 0
 
 ## Planned Feature
-- Set target or predefined target
-- Toast message onBackPressed change to snackbar / snackbar material
 - Dark theme
 - Notification, button, counter text etc.
 
 ## Current app version
-1.6.2 - 26-May-2020
+1.9.5 - 3-Jun-2020
 
 *Starting from version 1.7.0, versionName will start following these **major.minor.point** format.*
 

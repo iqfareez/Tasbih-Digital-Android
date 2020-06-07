@@ -20,7 +20,7 @@ public class SetTargetPicker extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         final NumberPicker numberPicker = new NumberPicker(getActivity());
 
-        final int currentVal = ((MainActivity)getActivity()).debugTargetValue;
+        final int currentVal = ((MainActivity)getActivity()).targetZikr;
         numberPicker.setMaxValue(100);
         numberPicker.setMinValue(5);
         numberPicker.setValue(currentVal);
@@ -28,8 +28,8 @@ public class SetTargetPicker extends DialogFragment {
         Log.d(TAG, "onCreateDialog: curretVal=" + currentVal);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Set target counter");
-        builder.setMessage("Betweeen 5 to 100");
+        builder.setTitle("Set target between 5 to 100");
+        builder.setMessage("Round count will be reset!");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
