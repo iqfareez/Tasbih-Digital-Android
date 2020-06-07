@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
     private View parentLayout;
 
+    public int debugTargetValue = 34;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -284,10 +286,17 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
     @Override
     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-        Toast.makeText(this, "selected number: " + picker.getValue(), Toast.LENGTH_SHORT).show();
-    }
 
-    // TODO: 22/5/2020 set target
-    // TODO: Set target
+        if (oldVal != newVal) {
+            Toast.makeText(this, "selected number: " + picker.getValue(), Toast.LENGTH_SHORT).show();
+            debugTargetValue = newVal;
+        } else {
+            Toast.makeText(this, "Nothing changed: " + picker.getValue(), Toast.LENGTH_SHORT).show();
+        }
+
+        //so far so good
+        //TODO: set main target value plak
+        //TODO: Change Toast to snackbar
+    }
 
 }

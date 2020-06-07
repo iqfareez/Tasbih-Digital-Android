@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.NumberPicker;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 public class SetTargetPicker extends DialogFragment {
+    private static final String TAG = "SetTargetPicker";
     private NumberPicker.OnValueChangeListener valueChangeListener;
 
     @NonNull
@@ -18,8 +20,12 @@ public class SetTargetPicker extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         final NumberPicker numberPicker = new NumberPicker(getActivity());
 
+        final int currentVal = ((MainActivity)getActivity()).debugTargetValue;
         numberPicker.setMaxValue(100);
         numberPicker.setMinValue(5);
+        numberPicker.setValue(currentVal);
+
+        Log.d(TAG, "onCreateDialog: curretVal=" + currentVal);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Set target counter");
@@ -28,14 +34,15 @@ public class SetTargetPicker extends DialogFragment {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                valueChangeListener.onValueChange(numberPicker, numberPicker.getValue(), numberPicker.getValue());
+                valueChangeListener.onValueChange(numberPicker, currentVal, numberPicker.getValue());
+                Log.d(TAG, "onClick: currentVal=" + currentVal + ", newVal=" + numberPicker.getValue());
             }
         });
 
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                valueChangeListener.onValueChange(numberPicker,numberPicker.getValue(), numberPicker.getValue());
+
             }
         });
 
