@@ -8,8 +8,8 @@ android {
         applicationId "com.maplerr.tasbihdigitalandroid"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 7
-        versionName "1.9.5"
+        versionCode 8
+        versionName "1.10.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
