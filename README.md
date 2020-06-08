@@ -26,7 +26,7 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 ## Current app version
 1.9.5 - 3-Jun-2020
 
-*Starting from version 1.7.0, versionName will start following these **major.minor.point** format.*
+*Starting from version 1.7.0, versionName will start following **Semantic version renaming** represents by this **major.minor.point** format.*
 
 Example:
 - 1.0.0 to 1.0.1 for a bug fix
