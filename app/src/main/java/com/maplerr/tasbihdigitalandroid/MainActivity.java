@@ -293,18 +293,16 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
         if (oldVal != newVal) {
-            Toast.makeText(this, "selected number: " + picker.getValue(), Toast.LENGTH_SHORT).show();
+            showSnackBar(parentLayout, "Target number changed to " + newVal);
             targetZikr = newVal;
             targetText.setText(String.valueOf(targetZikr));
             progressBar.setMax(targetZikr);
             cummulativeRound = progressCounter = 0;
             cummulativeText.setText("0");
         } else {
-            Toast.makeText(this, "Nothing changed: " + picker.getValue(), Toast.LENGTH_SHORT).show();
+            showSnackBar(parentLayout,"Nothing changed. Target value is " + oldVal);
         }
 
-        //so far so good
-        //TODO: Change Toast to snackbar
     }
 
 }
