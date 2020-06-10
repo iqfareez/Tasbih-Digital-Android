@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -74,6 +76,13 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             public void onClick(View v) {
                 if (countZikr != 0)
                     openResetDialog();
+            }
+        });
+
+        targetText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTargetDialog(); //set target dialog boleh dibuka dengan teka kat atas or kt number
             }
         });
     }
@@ -302,6 +311,11 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         } else {
             showSnackBar(parentLayout,"Nothing changed. Target value is " + oldVal);
         }
+
+    }
+
+    private void vibrateFeedback(int millis) {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
     }
 
