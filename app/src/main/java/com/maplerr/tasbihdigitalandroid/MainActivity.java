@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
@@ -165,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             progressCounter = 0;
             cummulativeRound += 1;
             cummulativeText.setText("Round: " + cummulativeRound);
+            vibrateFeedback(170);
         }
     }
 
@@ -314,9 +316,18 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
     }
 
-    private void vibrateFeedback(int millis) {
+    private void vibrateFeedback(long millis) {
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
+        if (v != null) { //for remove warning
+            if (VERSION.SDK_INT >= VERSION_CODES.O) {
+                v.vibrate(VibrationEffect.createOneShot(millis, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                v.vibrate(millis);
+            }
+        }
+
+        //https://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
     }
 
 }
