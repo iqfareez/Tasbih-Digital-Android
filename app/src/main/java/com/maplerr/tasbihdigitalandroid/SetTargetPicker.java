@@ -42,7 +42,7 @@ public class SetTargetPicker extends DialogFragment {
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                ((MainActivity)getActivity()).showSnackBar(((MainActivity)getActivity()).parentLayout, "Nothing changed");
             }
         });
 

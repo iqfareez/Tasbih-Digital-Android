@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
     private long backPressedTimer;
 
-    private View parentLayout;
+    public View parentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
