@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -72,6 +74,15 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         targetText.setText(String.valueOf(targetZikr));
         progressBar.setMax(targetZikr);
 
+        countText.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                copyText();
+                showSnackBar(parentLayout, "Copied!");
+                return true;
+            }
+        });
+
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +97,14 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 openTargetDialog(); //set target dialog boleh dibuka dengan teka kat atas or kt number
             }
         });
+    }
+
+    private void copyText() {
+        ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("simple text", countText.getText());
+        clipboard.setPrimaryClip(clip);
+
+        //https://developer.android.com/guide/topics/text/copy-paste#java
     }
 
     //region menu toolbar
@@ -328,6 +347,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         }
 
         //https://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
+        //https://stackoverflow.com/questions/46957405/method-invocation-vibrate-may-produce-java-lang-nullpointerexception-warning-a
     }
 
 }
