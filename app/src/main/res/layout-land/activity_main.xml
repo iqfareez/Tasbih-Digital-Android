@@ -15,27 +15,21 @@
         android:text="@string/mockMainNum"
         android:textColor="#000000"
         android:textSize="70sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186" />
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="85dp" />
 
     <Button
         android:id="@+id/button_count"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="600dp"
-        android:layout_height="110dp"
-        android:layout_marginBottom="48dp"
+        android:layout_width="367dp"
+        android:layout_height="201dp"
         android:background="@drawable/button_bg"
         android:onClick="incrementCount"
         android:text="@string/button_start_text"
         android:textSize="57sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="297dp"
+        tools:layout_editor_absoluteY="97dp" />
 
     <Button
         android:id="@+id/button_reset"
@@ -43,39 +37,27 @@
         android:layout_height="wrap_content"
         android:text="@string/button_reset"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_count"
-        app:layout_constraintVertical_bias="0.969" />
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="290dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="189dp"
+        android:layout_height="15dp"
         android:layout_marginHorizontal="50dp"
         android:max="10"
         android:progress="0"
-        app:layout_constraintBottom_toTopOf="@+id/button_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_zikr"
-        app:layout_constraintVertical_bias="0.222" />
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="240dp" />
 
     <TextView
         android:id="@+id/textView_progress_target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mockprogressNum"
-        app:layout_constraintBottom_toTopOf="@+id/button_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toBottomOf="@+id/text_zikr"
-        app:layout_constraintVertical_bias="0.542" />
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="179dp" />
 
     <Button
         android:id="@+id/button_Debug_Purposes"
@@ -94,11 +76,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Round: 0"
-        app:layout_constraintBottom_toTopOf="@+id/button_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="262dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
