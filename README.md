@@ -21,10 +21,10 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 
 ## Planned Feature
 - Dark theme
-- Notification, button, counter text etc.
+- Notification with button, counter text etc.
 
 ## Current app version
-1.10.7 - 8-Jun-2020
+1.14.8 - 11-Jun-2020
 
 *Starting from version 1.7.0, versionName will start following **Semantic version renaming** represents by this **major.minor.point** format.*
 
