@@ -1,83 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:weightSum="3"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/text_zikr"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mockMainNum"
-        android:textColor="#000000"
-        android:textSize="70sp"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="85dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="2">
 
-    <Button
-        android:id="@+id/button_count"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="367dp"
-        android:layout_height="201dp"
-        android:background="@drawable/button_bg"
-        android:onClick="incrementCount"
-        android:text="@string/button_start_text"
-        android:textSize="57sp"
-        android:textStyle="italic"
-        tools:layout_editor_absoluteX="297dp"
-        tools:layout_editor_absoluteY="97dp" />
+        <TextView
+            android:id="@+id/text_zikr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/mockMainNum"
+            android:textColor="#000000"
+            android:textSize="70sp"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_reset"
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginHorizontal="50dp"
+            android:max="10"
+            android:progress="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.704" />
+
+        <TextView
+            android:id="@+id/textView_progress_target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:text="@string/mockprogressNum"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="0.533" />
+
+        <Button
+            android:id="@+id/button_Debug_Purposes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="ViewAndroidBuildNum"
+            android:text="@string/buttonDebug"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_cummulative_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="84dp"
+            android:text="Round"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_reset"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="290dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="189dp"
-        android:layout_height="15dp"
-        android:layout_marginHorizontal="50dp"
-        android:max="10"
-        android:progress="0"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="240dp" />
+        <Button
+            android:id="@+id/button_count"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:onClick="incrementCount"
+            android:text="@string/button_start_text"
+            android:layout_margin="10dp"
+            android:textSize="57sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView_progress_target"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mockprogressNum"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="179dp" />
-
-    <Button
-        android:id="@+id/button_Debug_Purposes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="ViewAndroidBuildNum"
-        android:text="@string/buttonDebug"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_cummulative_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Round: 0"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="262dp" />
+        <Button
+            android:id="@+id/button_reset"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="5"
+            android:text="@string/button_reset"
+            android:visibility="invisible" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</LinearLayout>

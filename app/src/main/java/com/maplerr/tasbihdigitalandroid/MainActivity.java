@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             @Override
             public boolean onLongClick(View v) {
                 copyText();
+                vibrateFeedback(55);
                 showSnackBar(parentLayout, "Copied!");
                 return true;
             }

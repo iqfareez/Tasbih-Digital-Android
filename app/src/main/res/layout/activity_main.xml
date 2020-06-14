@@ -11,11 +11,12 @@
 
     <TextView
         android:id="@+id/text_zikr"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mockMainNum"
         android:textColor="#000000"
         android:textSize="70sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/button_count"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
