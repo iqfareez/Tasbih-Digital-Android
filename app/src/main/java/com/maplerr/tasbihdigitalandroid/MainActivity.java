@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 openTargetDialog(); //set target dialog boleh dibuka dengan teka kat atas or kt number
             }
         });
+
+        
     }
 
     private void copyText() {

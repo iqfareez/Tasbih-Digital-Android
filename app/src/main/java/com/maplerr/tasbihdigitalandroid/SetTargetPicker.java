@@ -35,6 +35,7 @@ public class SetTargetPicker extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 valueChangeListener.onValueChange(numberPicker, currentVal, numberPicker.getValue());
+                //TODO maybe try to listen input value before commit
                 Log.d(TAG, "onClick: currentVal=" + currentVal + ", newVal=" + numberPicker.getValue());
             }
         });
