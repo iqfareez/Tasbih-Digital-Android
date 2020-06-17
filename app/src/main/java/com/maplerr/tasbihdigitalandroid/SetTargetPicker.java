@@ -9,9 +9,9 @@ import android.widget.NumberPicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
+import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class SetTargetPicker extends DialogFragment {
+public class SetTargetPicker extends AppCompatDialogFragment {
     private static final String TAG = "SetTargetPicker";
     private NumberPicker.OnValueChangeListener valueChangeListener;
 
