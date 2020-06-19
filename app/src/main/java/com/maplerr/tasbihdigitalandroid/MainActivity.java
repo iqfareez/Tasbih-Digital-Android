@@ -23,6 +23,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     private Button buttonCount;
     private Button resetButton;
     private ProgressBar progressBar;
+    private EditText nameText;
 
     public int countZikr = 0;
     public int targetZikr = 10;
@@ -73,11 +75,12 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         cummulativeText = findViewById(R.id.textView_cummulative_count);
         targetText.setText(String.valueOf(targetZikr));
         progressBar.setMax(targetZikr);
+        nameText = findViewById(R.id.editTextPersonName);
 
         countText.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                copyText();
+                copyText(countText.getText());
                 vibrateFeedback(55);
                 showSnackBar(parentLayout, "Copied!");
                 return true;
@@ -99,12 +102,24 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             }
         });
 
+        cummulativeText.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                copyText(cummulativeText.getText());
+                vibrateFeedback(55);
+                showSnackBar(parentLayout, "Copied!");
+                return true;
+            }
+        });
+
+
+
         
     }
 
-    private void copyText() {
+    private void copyText(CharSequence text) {
         ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("simple text", countText.getText());
+        ClipData clip = ClipData.newPlainText("simple text", text);
         clipboard.setPrimaryClip(clip);
 
         //https://developer.android.com/guide/topics/text/copy-paste#java
@@ -156,6 +171,9 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             message = message + "I didn't make any progress yet";
         else
             message = message + "I made till " + countZikr + ".";
+
+        //TODO: Check is name is empty. Jgan letak line ni
+        message = message + " -" + nameText.getText();
 
         sendIntent.putExtra(Intent.EXTRA_TEXT, message);
         sendIntent.setType("text/plain");
@@ -352,5 +370,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         //https://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
         //https://stackoverflow.com/questions/46957405/method-invocation-vibrate-may-produce-java-lang-nullpointerexception-warning-a
     }
+
+    //TODO: setup done keyboard, link dkat bookmark
 
 }
