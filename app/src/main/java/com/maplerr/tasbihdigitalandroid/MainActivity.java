@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         progressBar.setMax(targetZikr);
         nameText = findViewById(R.id.editTextPersonName);
 
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean isFirstStart = prefs.getBoolean("firstStart", true);
+
+        if (isFirstStart)
+            showWelcomeDialog();
+
         countText.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -115,6 +121,17 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
 
         
+    }
+
+    private void showWelcomeDialog() {
+        WelcomeDialog welcomeDialog = new WelcomeDialog(this);
+        welcomeDialog.show(getSupportFragmentManager(),"welcome dialog");
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+
     }
 
     private void copyText(CharSequence text) {
