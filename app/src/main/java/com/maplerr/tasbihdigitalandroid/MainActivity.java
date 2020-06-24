@@ -127,8 +127,9 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     nameText.clearFocus();
                     if (nameText.length() > 0) {
-                        showSnackBar(parentLayout, "Name set to " + nameText.getText());
-                    }
+                        showSnackBar(parentLayout, "Name successfully set");
+                    } else
+                        showSnackBar(parentLayout, "Name cleared");
                 }
                 return false;
             }
