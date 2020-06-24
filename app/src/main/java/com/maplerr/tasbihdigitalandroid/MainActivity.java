@@ -18,10 +18,12 @@ import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -118,7 +120,19 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             }
         });
 
+        nameText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    nameText.clearFocus();
+                    if (nameText.length() > 0) {
+                        showSnackBar(parentLayout, "Name set to " + nameText.getText());
+                    }
+                }
+                return false;
+            }
 
+        });
 
         
     }
@@ -189,8 +203,9 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         else
             message = message + "I made till " + countZikr + ".";
 
-        //TODO: Check is name is empty. Jgan letak line ni
-        message = message + " -" + nameText.getText();
+        if (nameText.length() > 0) {
+            message = message + " -" + nameText.getText();
+        }
 
         sendIntent.putExtra(Intent.EXTRA_TEXT, message);
         sendIntent.setType("text/plain");
@@ -387,7 +402,5 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         //https://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
         //https://stackoverflow.com/questions/46957405/method-invocation-vibrate-may-produce-java-lang-nullpointerexception-warning-a
     }
-
-    //TODO: setup done keyboard, link dkat bookmark
 
 }
