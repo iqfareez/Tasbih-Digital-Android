@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         editor.putInt(S_PROG_COUNT, progressCounter);
         editor.putInt(S_CUMMU_COUNT, cummulativeRound);
         editor.putInt(S_TARGET_ZIKR, targetZikr);
-        editor.putString(S_TEXT_NAME, nameText.getText());
+        editor.putString(S_TEXT_NAME, nameText.getText().toString());
 
         editor.apply();
     }
@@ -313,6 +313,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         progressCounter = prefs.getInt(S_PROG_COUNT, 0);
         cummulativeRound = prefs.getInt(S_CUMMU_COUNT, 0);
         targetZikr = prefs.getInt(S_TARGET_ZIKR, 10);
+        nameText.setText(prefs.getString(S_TEXT_NAME, ""));
 
         progressBar.setMax(targetZikr);
         updateProgressBar();
