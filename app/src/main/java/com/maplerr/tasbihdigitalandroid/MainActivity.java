@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     private static final String S_PROG_COUNT = "progressCount"; //utk SharedPreference
     private static final String S_CUMMU_COUNT = "cummulativeCount"; //utk SharedPreference
     private static final String S_TARGET_ZIKR = "targetZikr"; //target zikir counter tepi progress bar
+    private static final String S_TEXT_NAME = "UserNameText"; //name in text view
 
     private static final String TAG = "MainActivity";
     private TextView countText;
@@ -297,6 +298,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         editor.putInt(S_PROG_COUNT, progressCounter);
         editor.putInt(S_CUMMU_COUNT, cummulativeRound);
         editor.putInt(S_TARGET_ZIKR, targetZikr);
+        editor.putString(S_TEXT_NAME, nameText.getText());
 
         editor.apply();
     }
