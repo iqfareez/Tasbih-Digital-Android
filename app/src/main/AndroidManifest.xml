@@ -3,6 +3,7 @@
     package="com.maplerr.tasbihdigitalandroid">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

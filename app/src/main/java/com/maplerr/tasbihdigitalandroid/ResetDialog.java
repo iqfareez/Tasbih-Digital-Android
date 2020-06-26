@@ -23,6 +23,7 @@ public class ResetDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Reset all values")
+                .setIcon(R.drawable.ic_fluent_erase_24_regular)
                 .setMessage("This can't be undone. Only target value will remain unchanged.")
                 .setPositiveButton("RESET", new DialogInterface.OnClickListener() {
                     @Override

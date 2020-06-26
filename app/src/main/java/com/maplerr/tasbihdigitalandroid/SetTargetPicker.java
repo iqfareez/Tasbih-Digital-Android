@@ -30,6 +30,7 @@ public class SetTargetPicker extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Set target between 5 to 100");
         builder.setMessage("Round count will be reset!");
+        builder.setIcon(R.drawable.ic_fluent_target_edit_24_regular);
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

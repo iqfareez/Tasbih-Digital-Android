@@ -406,5 +406,5 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         //https://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
         //https://stackoverflow.com/questions/46957405/method-invocation-vibrate-may-produce-java-lang-nullpointerexception-warning-a
     }
-
+    //TODO: Share button need to be white. Try adjusting the tint
 }

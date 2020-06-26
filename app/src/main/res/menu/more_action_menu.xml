@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_share"
-        android:icon="@drawable/ic_share"
+        android:icon="@drawable/ic_fluent_share"
         android:title="Share or Copy"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/action_item_3"
         android:title="Set target value"
+        android:icon="@drawable/ic_fluent_accessibility_16_filled"
         app:showAsAction="never" />
 
     <item android:id="@+id/action_item_2"

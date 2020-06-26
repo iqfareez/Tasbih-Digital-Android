@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.maplerr.tasbihdigitalandroid"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 11
         versionName "1.17.9"
@@ -16,7 +16,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

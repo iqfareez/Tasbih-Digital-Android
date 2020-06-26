@@ -23,6 +23,7 @@ public class WelcomeDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Welcome")
+                .setIcon(R.drawable.ic_fluent_new_24_regular)
                 .setMessage("Thanks for choosing this app")
                 .setPositiveButton("great!", new DialogInterface.OnClickListener() {
                     @Override
