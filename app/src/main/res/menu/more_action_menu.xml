@@ -30,6 +30,10 @@
         </menu>
     </item>
 
+    <item android:id="@+id/action_item_4"
+        android:title="Show at notifs."
+        app:showAsAction="never" />
+
     <item android:id="@+id/action_item_1"
         android:title="About"
         app:showAsAction="never" />

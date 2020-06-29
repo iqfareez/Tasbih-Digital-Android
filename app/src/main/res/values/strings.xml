@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Counter++</string>
+    <string name="app_name">Count++</string>
     <!-- MAIN BUTTON FUNC-->
     <string name="default_button_text">+1</string>
     <string name="button_start_text">START</string>

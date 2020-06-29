@@ -3,7 +3,10 @@ package com.maplerr.tasbihdigitalandroid;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -38,6 +41,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.maplerr.tasbihdigitalandroid.NotificationBuilder.CHANNEL_ID_1;
+
 public class MainActivity extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
     private static final String S_MAIN_COUNT = "mainCount"; //utk SharedPreference
     private static final String S_PROG_COUNT = "progressCount"; //utk SharedPreference
@@ -64,11 +69,15 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
     public View parentLayout;
 
+    private NotificationManagerCompat notificationManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         parentLayout = findViewById(R.id.parent_layout);
+
+        notificationManager = NotificationManagerCompat.from(this);
 
         countText = findViewById(R.id.text_zikr);
         buttonCount = findViewById(R.id.button_count);
@@ -177,6 +186,9 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 return true;
             case R.id.action_item_3: //setTargetValue
                 openTargetDialog();
+                return true;
+            case R.id.action_item_4: //showNotifs
+                showOnNotification();
                 return true;
             case R.id.action_subitem_1: //email
                 openWebPage("mailto:foxtrotiqmal3@gmail.com");
@@ -406,5 +418,20 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         //https://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
         //https://stackoverflow.com/questions/46957405/method-invocation-vibrate-may-produce-java-lang-nullpointerexception-warning-a
     }
-    //TODO: Share button need to be white. Try adjusting the tint
+
+    public void showOnNotification() {
+        String title = "Count from notification";
+        String message = String.valueOf(countZikr);
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID_1)
+                .setSmallIcon(R.drawable.ic_fluent_add_circle_24_regular)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManager.notify(1, notification);
+    }
+
 }
