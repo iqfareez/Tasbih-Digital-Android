@@ -424,7 +424,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         String message = String.valueOf(countZikr);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID_1)
-                .setSmallIcon(R.drawable.ic_fluent_add_circle_24_regular)
+                .setSmallIcon(R.drawable.ic_notifs_icon)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
