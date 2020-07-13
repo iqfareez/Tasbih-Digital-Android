@@ -422,6 +422,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     }
 
     public void showOnNotification() {
+        finish();
         String title = "Count from notification";
         String message = String.valueOf(countZikr);
 
@@ -438,13 +439,13 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 .setSmallIcon(R.drawable.ic_notifs_icon)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setColor(Color.BLUE)
+                .setColor(Color.rgb(230, 28, 98))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setOnlyAlertOnce(true)
-                .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
+                .addAction(R.drawable.ic_fluent_add_24_regular, "Toast", actionIntent)
                 .build();
 
         notificationManager.notify(1, notification);
