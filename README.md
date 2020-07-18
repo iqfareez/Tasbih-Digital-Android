@@ -3,7 +3,7 @@
 ![Works with Android](https://img.shields.io/badge/Works_with-Android-green?style=flat-square)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
 
-Counter-like app My beginner project. **Code in Java**
+Counter-like app. My beginner project. **Code in Java**
 
 ## DEVELOPMENT STATUS
 
