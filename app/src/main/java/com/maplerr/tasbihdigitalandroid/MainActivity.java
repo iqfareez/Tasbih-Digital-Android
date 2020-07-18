@@ -107,6 +107,13 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             }
         });
 
+        buttonCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                incrementCount();
+            }
+        });
+
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
     //endregion
 
-    public void incrementCount(View view) { //alsp handling updating text view
+    public void incrementCount() { //also handling updating text view
         buttonCount.setText("+1");
         countZikr++;
         countText.setText(String.valueOf(countZikr));
@@ -424,28 +431,28 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     public void showOnNotification() {
         finish();
         String title = "Count from notification";
-        String message = String.valueOf(countZikr);
 
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this,
                 0, activityIntent, 0);
 
         Intent broadcastIntent = new Intent(this, NotificationReceiver.class);
-        broadcastIntent.putExtra("toastMessage", message);
+        broadcastIntent.putExtra("action", countZikr);
+
         PendingIntent actionIntent = PendingIntent.getBroadcast(this, 0,
                 broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID_1)
                 .setSmallIcon(R.drawable.ic_notifs_icon)
                 .setContentTitle(title)
-                .setContentText(message)
+                .setContentText(String.valueOf(countZikr))
                 .setColor(Color.rgb(230, 28, 98))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setOnlyAlertOnce(true)
-                .addAction(R.drawable.ic_fluent_add_24_regular, "Toast", actionIntent)
+                .addAction(R.drawable.ic_fluent_add_24_regular, "Count", actionIntent)
                 .build();
 
         notificationManager.notify(1, notification);

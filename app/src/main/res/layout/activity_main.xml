@@ -29,7 +29,6 @@
         android:layout_height="254dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/button_bg"
-        android:onClick="incrementCount"
         android:text="@string/button_start_text"
         android:textSize="57sp"
         android:textStyle="italic"
