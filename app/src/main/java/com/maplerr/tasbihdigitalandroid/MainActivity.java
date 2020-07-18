@@ -144,9 +144,13 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     nameText.clearFocus();
+
+                    nameText.setText(nameText.getText().toString().trim());
+
                     if (nameText.length() > 0) {
                         showSnackBar(parentLayout, "Name successfully set");
-                    } else
+                    }
+                    else
                         showSnackBar(parentLayout, "Name cleared");
                 }
                 return false;

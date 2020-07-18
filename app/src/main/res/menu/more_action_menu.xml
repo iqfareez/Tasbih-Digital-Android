@@ -17,7 +17,7 @@
         app:showAsAction="never" >
         <menu>
             <item android:id="@+id/action_subitem_1"
-                android:title="Email me..."
+                android:title="Send email..."
                 app:showAsAction="never" />
 
             <item android:id="@+id/action_subitem_2"

@@ -40,7 +40,7 @@ Developement started during Covid-19 pandemic (April 2020) -fareez
 
 ## Current app version
 
-`1.17.9` - 24-Jun-2020
+`1.21.11` - 19-July-2020
 
 _Starting from version 1.7.0, versionName will start following **Semantic version renaming** represents by this **major.minor.point** format._
 
@@ -52,8 +52,10 @@ Example:
 
 ### Download application
 
-- [**Google Play:**](https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid)
+- [**Google Play**](https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid)
 
-- [**Huawei App Gallery:**](https://appgallery.cloud.huawei.com/marketshare/app/C102204673?locale=en_GB&source=appshare&subsource=C102204673) _expect delay by some version_
+- [**Huawei App Gallery**](https://appgallery.cloud.huawei.com/marketshare/app/C102204673?locale=en_GB&source=appshare&subsource=C102204673)
+
+- [**Sideload APK**](https://github.com/fareezMaple/Tasbih-Digital-Android/releases)
 
 Done forget to rate the app :wink:
