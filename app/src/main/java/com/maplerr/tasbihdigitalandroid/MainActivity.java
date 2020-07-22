@@ -196,7 +196,8 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 openTargetDialog();
                 return true;
             case R.id.action_item_4: //showNotifs
-                showOnNotification();
+//                showOnNotification();
+                StartService();
                 return true;
             case R.id.action_subitem_1: //email
                 openWebPage("mailto:foxtrotiqmal3@gmail.com");
@@ -455,6 +456,21 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 .build();
 
         notificationManager.notify(1, notification);
+    }
+
+    public void StartService() {
+        String input = String.valueOf(countZikr);
+
+        Intent serviceIntent = new Intent(this, NotifService.class);
+        serviceIntent.putExtra("inputExtra", input);
+
+        startService(serviceIntent);
+    }
+
+    public void StopService() {
+        Intent serviceIntent = new Intent(this, NotifService.class);
+
+        stopService(serviceIntent);
     }
 
 }

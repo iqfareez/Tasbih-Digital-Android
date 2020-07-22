@@ -3,6 +3,7 @@
     package="com.maplerr.tasbihdigitalandroid">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name=".App"
@@ -20,6 +21,7 @@
             </intent-filter>
         </activity>
         <receiver android:name=".NotificationReceiver"/>
+        <service android:name=".NotifService"/>
     </application>
 
 </manifest>
