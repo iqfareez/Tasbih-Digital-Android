@@ -1,7 +1,6 @@
 package com.maplerr.tasbihdigitalandroid;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -15,8 +14,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
-import android.nfc.Tag;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -33,7 +30,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +37,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
-import static com.maplerr.tasbihdigitalandroid.NotificationBuilder.CHANNEL_ID_1;
+import static com.maplerr.tasbihdigitalandroid.App.CHANNEL_ID_1;
 
 public class MainActivity extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
     private static final String S_MAIN_COUNT = "mainCount"; //utk SharedPreference
