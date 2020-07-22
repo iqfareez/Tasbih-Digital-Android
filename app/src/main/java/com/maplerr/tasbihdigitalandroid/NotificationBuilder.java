@@ -17,15 +17,15 @@ public class NotificationBuilder extends Application {
 
     private void CreateNotificationChannels() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel1 = new NotificationChannel(
+            NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID_1,
                     "Channel 1",
                     NotificationManager.IMPORTANCE_HIGH
             );
-            channel1.setDescription("This is channel 1");
+            serviceChannel.setDescription("This is channel 1");
 
             NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel1);
+            manager.createNotificationChannel(serviceChannel);
         }
     }
 }
