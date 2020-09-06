@@ -2,6 +2,7 @@ package com.maplerr.tasbihdigitalandroid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         parentLayout = findViewById(R.id.parent_layout);
 
         notificationManager = NotificationManagerCompat.from(this);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
 
         countText = findViewById(R.id.text_zikr);
         buttonCount = findViewById(R.id.button_count);
@@ -209,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 Toast.makeText(this, "You can promote this app other people", Toast.LENGTH_LONG).show();
                 openWebPage("https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid");
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

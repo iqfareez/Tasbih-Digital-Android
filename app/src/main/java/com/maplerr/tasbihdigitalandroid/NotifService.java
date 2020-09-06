@@ -44,7 +44,7 @@ public class NotifService extends Service {
                 .setContentText("Example service")
                 .setContentText(input)
                 .setSmallIcon(R.drawable.ic_notifs_icon)
-                .addAction(R.drawable.ic_notifs_icon, "stop",pStopSelf)
+                .addAction(R.drawable.ic_notifs_icon, "HIDE",pStopSelf)
                 .setContentIntent(pendingIntent)
                 .build();
 
