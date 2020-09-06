@@ -27,7 +27,8 @@ public class AboutDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("About")
                 .setIcon(R.drawable.ic_fluent_info_24_regular)
-                .setMessage("Digital Counter app is maplerr's project build because he bored in lockdown\n\n" +
+                .setMessage("Digital Counter app is maplerr's project build because he bored in lockdown\n" +
+                        "This project repository is available on GitHub\n\n" +
                         "Version " + VERSION_NAME)
                 .setPositiveButton("CLOSE", null)
                 .setNeutralButton("SOCMED", new DialogInterface.OnClickListener() {

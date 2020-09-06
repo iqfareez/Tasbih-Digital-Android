@@ -1,11 +1,5 @@
 package com.maplerr.tasbihdigitalandroid;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.ClipData;
@@ -15,8 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
-import android.nfc.Tag;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -33,15 +25,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import static com.maplerr.tasbihdigitalandroid.NotificationBuilder.CHANNEL_ID_1;
 
@@ -175,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     private void copyText(CharSequence text) {
         ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("simple text", text);
+        assert clipboard != null;
         clipboard.setPrimaryClip(clip);
 
         //https://developer.android.com/guide/topics/text/copy-paste#java
@@ -434,17 +430,17 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
     public void showOnNotification() {
         finish();
-        String title = "Count from notification";
+        String title = "Current counter";
 
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this,
                 0, activityIntent, 0);
 
-        Intent broadcastIntent = new Intent(this, NotificationReceiver.class);
-        broadcastIntent.putExtra("action", countZikr);
+//        Intent broadcastIntent = new Intent(this, NotificationReceiver.class);
+//        broadcastIntent.putExtra("action", countZikr);
 
-        PendingIntent actionIntent = PendingIntent.getBroadcast(this, 0,
-                broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        PendingIntent actionIntent = PendingIntent.getBroadcast(this, 0,
+//                broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID_1)
                 .setSmallIcon(R.drawable.ic_notifs_icon)
@@ -456,7 +452,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setOnlyAlertOnce(true)
-                .addAction(R.drawable.ic_fluent_add_24_regular, "Count", actionIntent)
+//                .addAction(R.drawable.ic_fluent_add_24_regular, "Count", actionIntent) //Count button didn't function
                 .build();
 
         notificationManager.notify(1, notification);
