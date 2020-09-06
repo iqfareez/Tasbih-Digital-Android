@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -144,8 +145,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
                     if (nameText.length() > 0) {
                         showSnackBar(parentLayout, "Name successfully set");
-                    }
-                    else
+                    } else
                         showSnackBar(parentLayout, "Name cleared");
                 }
                 return false;
@@ -153,12 +153,12 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
 
         });
 
-        
+
     }
 
     private void showWelcomeDialog() {
         WelcomeDialog welcomeDialog = new WelcomeDialog(this);
-        welcomeDialog.show(getSupportFragmentManager(),"welcome dialog");
+        welcomeDialog.show(getSupportFragmentManager(), "welcome dialog");
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     }
 
     private void copyText(CharSequence text) {
-        ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("simple text", text);
         assert clipboard != null;
         clipboard.setPrimaryClip(clip);
@@ -187,6 +187,9 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) { //add action2 kau kat sini
         switch (item.getItemId()) {
+            case R.id.action_change_theme:
+                changeThemeMode();
+                return true;
             case R.id.action_share:
                 shareValueToOtherApp();
                 return true;
@@ -245,6 +248,15 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         }
     }
 
+    void changeThemeMode() {
+        //https://proandroiddev.com/supporting-dark-themes-in-android-861b36adbb61
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+    }
+
     //endregion
 
     public void incrementCount() { //also handling updating text view
@@ -282,9 +294,8 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             }
 
             showSnackBar(parentLayout, "Reset done");
-        }
-        else
-            showSnackBar(parentLayout,"Canceled. Nothing changed");
+        } else
+            showSnackBar(parentLayout, "Canceled. Nothing changed");
 
     }
 
@@ -364,7 +375,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     }
 
     public void showSnackBar(View view, String message) {
-        Snackbar snackbar = Snackbar.make(view,message,Snackbar.LENGTH_SHORT);
+        Snackbar snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT);
         snackbar.show();
     }
 
@@ -408,7 +419,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
             cummulativeRound = progressCounter = 0;
             cummulativeText.setText("0");
         } else {
-            showSnackBar(parentLayout,"Nothing changed. Target value is " + oldVal);
+            showSnackBar(parentLayout, "Nothing changed. Target value is " + oldVal);
         }
 
     }

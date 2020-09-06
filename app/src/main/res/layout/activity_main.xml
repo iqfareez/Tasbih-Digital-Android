@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mockMainNum"
 
-        android:textSize="70sp"
+        android:textSize="80sp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/button_count"
         app:layout_constraintEnd_toEndOf="parent"
