@@ -200,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 openTargetDialog();
                 return true;
             case R.id.action_item_4: //showNotifs
+                //TODO: remove email, add github link etc
                 showOnNotification();
                 return true;
             case R.id.action_subitem_1: //email
