@@ -22,21 +22,21 @@
         app:showAsAction="never" >
         <menu>
             <item android:id="@+id/action_subitem_1"
-                android:title="Send email..."
+                android:title="GitHub repository"
                 app:showAsAction="never" />
 
             <item android:id="@+id/action_subitem_2"
-                android:title="Visit website..."
+                android:title="Visit website"
                 app:showAsAction="never" />
 
             <item android:id="@+id/action_subitem_3"
-                android:title="Open in Google Play..."
+                android:title="Rate and review"
                 app:showAsAction="never" />
         </menu>
     </item>
 
     <item android:id="@+id/action_item_4"
-        android:title="Show at notifs."
+        android:title="Show at notif. panel"
         app:showAsAction="never" />
 
     <item android:id="@+id/action_item_1"

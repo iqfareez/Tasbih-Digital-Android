@@ -35,5 +35,7 @@ dependencies {
     //design support library
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.microsoft.design:fluent-system-icons:1.1.23'
+    //custom tabs
+    implementation "androidx.browser:browser:1.2.0"
 
 }

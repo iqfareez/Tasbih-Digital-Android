@@ -31,6 +31,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -200,17 +201,17 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
                 openTargetDialog();
                 return true;
             case R.id.action_item_4: //showNotifs
-                //TODO: remove email, add github link etc
+
                 showOnNotification();
                 return true;
             case R.id.action_subitem_1: //email
-                openWebPage("mailto:foxtrotiqmal3@gmail.com");
+                openCustomTabs("https://github.com/fareezMaple/Tasbih-Digital-Android/releases");
                 return true;
             case R.id.action_subitem_2: //website
-                openWebPage("https://sites.google.com/view/tasbihdigitalfareez/home");
+                openCustomTabs("https://sites.google.com/view/tasbihdigitalfareez/home");
                 return true;
             case R.id.action_subitem_3: //playstore app
-                Toast.makeText(this, "You can promote this app other people", Toast.LENGTH_LONG).show();
+
                 openWebPage("https://play.google.com/store/apps/details?id=com.maplerr.tasbihdigitalandroid");
                 return true;
             default:
@@ -247,6 +248,14 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    public void openCustomTabs(String url) {
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+
+        builder.setToolbarColor(getResources().getColor(R.color.colorPrimaryLight));
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.launchUrl(this, Uri.parse(url));
     }
 
     void changeThemeMode() {
