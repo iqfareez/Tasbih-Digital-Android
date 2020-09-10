@@ -10,7 +10,9 @@ Counter-like app. My beginner project. **Code in Java**
 **ENDED**
 
 Development started during Covid-19 pandemic (April 2020) -fareez
+
 Development ended on 10-Sept-2020 (4 months since it started)
+
 > “Life moves on and so should we” -*Spencer Johnson*
 
 ## Getting started with app
@@ -28,9 +30,9 @@ Development ended on 10-Sept-2020 (4 months since it started)
 
 ## App UI
 
-<img src="https://user-images.githubusercontent.com/60868965/84561832-4b5d9780-ad82-11ea-8a78-7d6194374bcb.png" alt="Screenshot_1591864421" width="270" height="480">
-<img src="https://user-images.githubusercontent.com/60868965/84561834-4d275b00-ad82-11ea-935d-5382c23c6a6d.png" alt="Screenshot_1591864460" width="270" height="480">
-<img src="https://user-images.githubusercontent.com/60868965/84561836-4e588800-ad82-11ea-857c-4baf88e23342.png" alt="Screenshot_1591864474" width="270" height="480">
+![1599723676714](https://user-images.githubusercontent.com/60868965/92742972-b2efa700-f3b2-11ea-8841-fee301fe8f9d.png)
+![1599723696123](https://user-images.githubusercontent.com/60868965/92742981-b4b96a80-f3b2-11ea-8fa6-66d3f543f2c9.png)
+
 
 ## Current app version
 
