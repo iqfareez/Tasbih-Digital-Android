@@ -253,7 +253,8 @@ public class MainActivity extends AppCompatActivity implements NumberPicker.OnVa
     public void openCustomTabs(String url) {
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
 
-        builder.setToolbarColor(getResources().getColor(R.color.colorPrimaryLight));
+        builder.setToolbarColor(getResources().getColor(R.color.colorPrimaryDark));
+        builder.setShowTitle(true);
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(this, Uri.parse(url));
     }

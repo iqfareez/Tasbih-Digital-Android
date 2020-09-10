@@ -14,11 +14,14 @@
 
     <item android:id="@+id/action_item_3"
         android:title="Set target value"
-        android:icon="@drawable/ic_fluent_accessibility_16_filled"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_item_4"
+        android:title="Show at notif. panel"
         app:showAsAction="never" />
 
     <item android:id="@+id/action_item_2"
-        android:title="Help"
+        android:title="More"
         app:showAsAction="never" >
         <menu>
             <item android:id="@+id/action_subitem_1"
@@ -34,10 +37,6 @@
                 app:showAsAction="never" />
         </menu>
     </item>
-
-    <item android:id="@+id/action_item_4"
-        android:title="Show at notif. panel"
-        app:showAsAction="never" />
 
     <item android:id="@+id/action_item_1"
         android:title="About"

@@ -24,7 +24,7 @@ public class WelcomeDialog extends AppCompatDialogFragment {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Welcome")
                 .setIcon(R.drawable.ic_fluent_new_24_regular)
-                .setMessage("😁")
+                .setMessage(":)))")
                 .setPositiveButton("haha great!", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
